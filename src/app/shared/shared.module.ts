@@ -10,12 +10,14 @@ import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LoadingComponent } from './loading/loading/loading.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     PokemonSearchComponent,
-    PokemonListComponent
+    PokemonListComponent,
+    LoadingComponent
   ],
   exports: [
     HeaderComponent,

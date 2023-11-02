@@ -10,16 +10,17 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class PokemonComponent implements OnInit {
 
+  public isLoading: boolean = true;
+
   private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
   private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
 
   public pokemon: any;
-  public isLoading: boolean = false;
   public apiError: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
   ) { }
 
   ngOnInit(): void {
@@ -27,16 +28,16 @@ export class PokemonComponent implements OnInit {
   }
   public getPokemon(){
     const id = this.activatedRoute.snapshot.params['id'];
-    const pokemon = this.pokemonService.apiGetPokemon(`${this.urlPokemon}/${id}`);
-    const name = this.pokemonService.apiGetPokemon(`${this.urlName}/${id}`);
-
-    return forkJoin([pokemon, name]).subscribe(
-      res => {
-        this.pokemon = res;
-        this.isLoading = true;
+   
+    this.pokemonService.getPokemonById(id).subscribe(
+      (pokemonData) => {
+        this.pokemon = pokemonData;
+        this.isLoading = false;
       },
-      error => {
+      (error) => {
         this.apiError = true;
+        console.error('Erro ao buscar dados do Pokémon:', error);
+        this.isLoading = false;
       }
     );
   }

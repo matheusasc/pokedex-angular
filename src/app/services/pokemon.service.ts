@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { Pokemon } from '../model/pokemon.model';
 import { BehaviorSubject } from 'rxjs';
+import { map, tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
+
+  private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
 
   private pokemons = new BehaviorSubject<Pokemon[]>([]);  
 
@@ -42,6 +45,11 @@ export class PokemonService {
 
   getPokemonByName(name: string): Pokemon | undefined {
     return this.pokemons.getValue().find((pokemon) => pokemon.name === name);
+  }
+
+  getPokemonById(id: number): Observable<any> {
+    const url = `${this.urlPokemon}/${id}`;
+    return this.httpClient.get(url);
   }
 
 }
