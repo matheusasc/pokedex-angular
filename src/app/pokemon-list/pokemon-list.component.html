@@ -7,8 +7,8 @@
 </div>
 
 <div class="pokemon-list">
-    <app-pokemon-card *ngFor="let pokemon of pokemonService.pokemons; index as i"
-        [pokemon]="pokemon"
+    <app-pokemon-card *ngFor="let pokemon of pokemons$ | async; index as i"
+        [nomePokemon]="pokemon.name"
         [numero]="i + 1">
     </app-pokemon-card>
 </div>
