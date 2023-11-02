@@ -28,6 +28,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   acessarPokemon(pokemonId: number): void {
+    console.log('Clicado em Pokémon com ID:', pokemonId);
     this.router.navigate(['/pokemon', pokemonId]);
   }
 

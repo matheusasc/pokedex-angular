@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { PokemonService } from '../services/pokemon.service';
+import { trigger, state, style, animate, transition } from '@angular/animations'; // Importe a animação
+import { Pokemon, PokemonStat } from '../model/pokemon.model';
 
 @Component({
   selector: 'app-pokemon',
@@ -10,35 +12,44 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class PokemonComponent implements OnInit {
 
-  public isLoading: boolean = true;
-
-  private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
-  private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
-
+  public isLoading: boolean = true; 
   public pokemon: any;
   public apiError: boolean = false;
+  public animationState: string = 'initial';
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private pokemonService: PokemonService,
+    private route: ActivatedRoute,
+    private pokemonService: PokemonService
   ) { }
 
   ngOnInit(): void {
-    this.getPokemon();
+    this.route.params.subscribe((params) => {
+      const id = params['id'];
+      this.getPokemonDetails(id);
+    });
   }
-  public getPokemon(){
-    const id = this.activatedRoute.snapshot.params['id'];
-   
+
+  getPokemonDetails(id: number) {
     this.pokemonService.getPokemonById(id).subscribe(
       (pokemonData) => {
         this.pokemon = pokemonData;
-        this.isLoading = false;
       },
       (error) => {
-        this.apiError = true;
         console.error('Erro ao buscar dados do Pokémon:', error);
-        this.isLoading = false;
       }
     );
+  }
+
+  getPokemonStat(statName: string): number {
+    const stat = this.pokemon.stats.find((stat: PokemonStat) => stat.stat.name === statName);
+    return stat ? stat.base_stat : 0;
+  }
+
+  public getStatValue(statName: string): number | undefined {
+    if (this.pokemon) {
+      const stat = this.pokemon.stats.find((s: PokemonStat) => s.stat.name === statName);
+      return stat ? stat.base_stat : undefined;
+    }
+    return undefined;
   }
 }

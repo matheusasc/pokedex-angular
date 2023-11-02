@@ -17,6 +17,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { LoadingComponent } from './shared/loading/loading/loading.component';
+import { CommonModule } from '@angular/common';
+import { PokemonComponent } from './pokemon/pokemon.component';
 
 
 
@@ -25,10 +27,12 @@ import { LoadingComponent } from './shared/loading/loading/loading.component';
     AppComponent,
     PokemonListComponent,
     PokemonCardComponent,
+    PokemonComponent,
     HeaderComponent,
     LoadingComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
