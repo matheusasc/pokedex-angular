@@ -1,27 +1,61 @@
 # PokedexAngularAtt
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) na versão 16.2.2.
 
-## Development server
+## Pré-requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Antes de executar o projeto, certifique-se de ter o [Node.js](https://nodejs.org/) e o [npm](https://www.npmjs.com/) instalados em seu sistema.
 
-## Code scaffolding
+## Servidor de Desenvolvimento
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Execute `ng serve` para iniciar o servidor de desenvolvimento. Acesse `http://localhost:4200/` em seu navegador. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
+
+Antes de executar o projeto pela primeira vez, execute `npm install` para instalar as dependências:
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng build` para compilar o projeto. Os artefatos de compilação serão armazenados no diretório `dist/`.
 
-## Running unit tests
+## Execução de Testes Unitários
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Execute `ng test` para executar os testes unitários com o [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Execução de Testes End-to-End
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Execute `ng e2e` para executar os testes de ponta a ponta com uma plataforma de sua escolha. Para utilizar este comando, você deve primeiro adicionar um pacote que implementa capacidades de teste de ponta a ponta.
 
-## Further help
+## Ajuda Adicional
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para obter mais ajuda sobre o Angular CLI, utilize o comando `ng help` ou acesse a [Visão Geral do Angular CLI e Referência de Comandos](https://angular.io/cli) (em inglês).
+
+## Funcionalidades
+
+- Lista de Pokémon: Visualize uma lista de Pokémon com seus nomes e tipos.
+- Pesquisa por Nome: Pesquise Pokémon por nome para encontrar Pokémon específicos.
+- Detalhes do Pokémon: Clique em um Pokémon para obter mais informações, incluindo tipo, altura e peso.
+
+## Tecnologias Utilizadas
+
+- Angular: Framework JavaScript para o desenvolvimento de aplicações web.
+- RxJS: Biblioteca para programação reativa que simplifica o tratamento de fluxos de dados.
+- HttpClient: Módulo Angular para fazer requisições HTTP.
+- Material Design: Biblioteca de componentes de interface do usuário para Angular.
+
+## Contribuição
+
+Contribuições são bem-vindas! Se você deseja melhorar este projeto, siga estas etapas:
+
+1. Fork o repositório
+2. Crie uma nova branch: `git checkout -b minha-feature`
+3. Faça suas alterações e commit: `git commit -m 'Adicione minha feature'`
+4. Envie para o repositório remoto: `git push origin minha-feature`
+5. Crie um Pull Request
+
+
+## Contato
+
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
+
+Matheus Assunção - [Email](matheusassuncao@gmail.com)
+
+[GitHub](https://github.com/matheusasc) | [LinkedIn](https://www.linkedin.com/in/matheus-assuncao-607879180/)
