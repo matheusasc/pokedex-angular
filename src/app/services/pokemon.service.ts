@@ -52,4 +52,42 @@ export class PokemonService {
     return this.httpClient.get(url);
   }
 
+  search(searchTerm: string): Observable<Pokemon[]> {
+    searchTerm = searchTerm.toLowerCase();
+
+    if (searchTerm === '') {
+      return this.pokemons.asObservable();
+    } else {
+      return this.pokemons.pipe(
+        map((pokemons) =>
+          pokemons.filter((pokemon) =>
+            pokemon.name.toLowerCase().includes(searchTerm)
+          )
+        )
+      );
+    }
+  }
+
+  get apiListAllPokemons():Observable<any>{
+    return this.httpClient.get<any>(this.urlPokemon).pipe(
+      tap( res => res ),
+      tap( res => {
+        res.results.map( (resPokemons: any) => {
+
+          this.apiGetPokemon(resPokemons.url).subscribe(
+            res => resPokemons.status = res
+          );
+
+        })
+      })
+    )
+  }
+
+  public apiGetPokemon( url: string ):Observable<any>{
+    return this.httpClient.get<any>( url ).pipe(
+      map(
+        res => res
+      )
+    )
+  }
 }

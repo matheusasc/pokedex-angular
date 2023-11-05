@@ -1,17 +1,13 @@
+<!-- Falta implementar a lógica de filtragem dos pokemons nesta barra de pesquisa-->
+<app-pokemon-search (emmitSearch)="getSearch($event)"></app-pokemon-search>
+
+
 <div class="home-page">
-    <div class="search-container">
-        <mat-form-field appearance="fill">
-            <mat-label>Buscar Pokemon...</mat-label>
-            <input matInput type="text" #input (keyup)="search(input.value)">
-            <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-    </div>
-    
-    <div class="pokemon-list">
-        <app-pokemon-card *ngFor="let pokemon of pokemons$ | async; index as i"
+    <section class="pokemon-list">
+        <app-pokemon-card *ngFor="let pokemon of pokemonss$ | async; index as i"
             [nomePokemon]="pokemon.name"
             [numero]="i + 1"
             (click)="acessarPokemon(i + 1)">
         </app-pokemon-card>
-    </div>
+    </section>
 </div>
