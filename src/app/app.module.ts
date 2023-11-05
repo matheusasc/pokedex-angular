@@ -15,6 +15,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { LoadingComponent } from './shared/loading/loading/loading.component';
+import { CommonModule } from '@angular/common';
+import { PokemonComponent } from './pokemon/pokemon.component';
 
 
 
@@ -23,16 +27,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AppComponent,
     PokemonListComponent,
     PokemonCardComponent,
-    HeaderComponent
+    PokemonComponent,
+    HeaderComponent,
+    LoadingComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { PokemonService } from '../services/pokemon.service';
+import { Pokemon } from '../model/pokemon.model';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -7,9 +10,15 @@ import { Component, Input } from '@angular/core';
 })
 export class PokemonCardComponent {
 
-  @Input() pokemon: string = "";
-
   @Input() numero: number = 0;
+  tipo: string = "";
+  @Input() nomePokemon: string = "";
+
+  constructor(private pokemonService: PokemonService) {}
+
+  ngOnInit() {
+    this.carregarTipoDoPokemon();
+  }
 
   pegarImagemPokemon() {
     const numeroFormatado = this.leadingZero(this.numero);
@@ -25,6 +34,15 @@ export class PokemonCardComponent {
     }
 
     return s;
+  }
+
+  carregarTipoDoPokemon() {
+    const pokemonInfo: Pokemon | undefined = this.pokemonService.getPokemonByName(this.nomePokemon);
+
+    if (pokemonInfo) {
+      this.nomePokemon = pokemonInfo.name;
+      this.tipo = pokemonInfo.type;
+    }
   }
 
 }
