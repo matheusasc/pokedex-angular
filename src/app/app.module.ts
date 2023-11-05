@@ -19,6 +19,8 @@ import { MatCardModule } from '@angular/material/card';
 import { LoadingComponent } from './shared/loading/loading/loading.component';
 import { CommonModule } from '@angular/common';
 import { PokemonComponent } from './pokemon/pokemon.component';
+import { PokemonSearchComponent } from './shared/pokemon-search/pokemon-search.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,7 +31,8 @@ import { PokemonComponent } from './pokemon/pokemon.component';
     PokemonCardComponent,
     PokemonComponent,
     HeaderComponent,
-    LoadingComponent
+    LoadingComponent,
+    PokemonSearchComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,8 @@ import { PokemonComponent } from './pokemon/pokemon.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]
